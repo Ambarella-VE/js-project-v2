@@ -121,10 +121,10 @@ function handleBtnApply(fName = "", lName = "", bDate = "", email = "", income =
           </h3>
         </div>
         <div class="row">
-          <h5 class="col s8">
+          <h5 class="col text-flow s12 m8">
           Tienes la oportunidad de solicitar 
           </h5>
-          <h5 class="col s4 green-text darken-3">
+          <h5 class="col text-flow s12 m4 green-text darken-3">
             ${currencyFormatter.format(maxLoan)}
           </h5>
         </div>
@@ -147,16 +147,16 @@ function handleBtnApply(fName = "", lName = "", bDate = "", email = "", income =
           </h3>
         </div>
         <div class="row">
-          <h5 class="col s7">
+          <h5 class="col s12 text-flow">
           Tienes la oportunidad de solicitar desde
           </h5>
-          <h5 class="col s2 green-text darken-3">
+          <h5 class="col s12 l3 green-text darken-3">
             ${currencyFormatter.format(minLoan)}
           </h5>
-          <h5 class="col s1">
+          <h5 class="col s12 l2">
           hasta
           </h5>
-          <h5 class="col s2 green-text darken-3">
+          <h5 class="col s12 l3 green-text darken-3">
             ${currencyFormatter.format(maxLoan)}
           </h5>
         </div>
