@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Import Google Icon Font (MATERIALIZE) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS (MATERIALIZE) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon-gp.ico" type="image/x-icon">
+
+    <!-- CSS Local -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Let browser know website is optimized for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Ambarella | Simulador de Préstamos</title>
+  </head>
+  <body>  
+    <header> <!-- INICIO DE HEADER -->
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="../index.html" class="brand-logo">  Ambarella  </a>
+            <a href="#" data-target="menu-side" class="sidenav-trigger" onClick="sidenavInit"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="../index.html">Home</a></li>
+              <li class="active"><a href="./simulator.html">Simula tu préstamo</a></li>
+              <li><a href="./application-form.html" class="waves-effect waves-light btn"><i class="material-icons right">account_balance</i>Solicitar prestamo</a></li>
+            </ul>
+                    
+          </div>
+        </nav>
+      </div>
+
+      <!-- SIDENAV -->
+      <ul class="sidenav" id="menu-side">
+        <li><a href="../index.html">Home</a></li>
+        <li class="active"><a href="./simulator.html">Simula tu préstamo</a></li>
+        <li><a href="./application-form.html" class="waves-effect waves-light btn"><i class="material-icons right">account_balance</i>Solicitar prestamo</a></li>
+      </ul>
+    </header> <!-- FIN DE HEADER -->
+
+    <section> <!-- INICIO DE FORM -->
+      <div class="container">
+        <div class="row">
+          <h2> Simulador de Préstamos</h2>
+        </div>
+        <div class="row">
+          Ingresa los datos que se piden a continuación para simular tu prestámo. Podrás visualizar el monto de las cuotas y cuánto irás pagando de interés y capital en cada una.
+        </div>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">attach_money</i>
+                <input type="number" name="capital" id="capital" class="validate">
+                <label for="capital">Capital Inicial</label>
+              </div>
+              <div class="input-field col s6">
+                <img src="../assets/images/discount-symbol.svg" class="prefix icon">
+                <input type="number" name="rate" id="rate" class="validate" value="30">
+                <label for="rate">Tasa de Interes</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">list</i>
+                <input type="number" name="periods" id="periods" class="validate">
+                <label for="periods">Cantidad de Cuotas</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">date_range</i>
+                <select id="frequency" name="frequency">
+                  <option value="" disabled selected>Escoge una opción</option>
+                  <option value="biweekly">Quincenal</option>
+                  <option value="monthly">Mensual</option>
+                  <option value="quarterly">Trimestral</option>
+                </select>
+                <label for="frequency">Frecuencia de las cuotas</label>
+              </div>
+            </div>
+            <div class="row center">
+              <div class="col s12">
+                <input id="btnCalculate" type="submit" value="Simular" class="waves-effect waves-light btn validate">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section> <!-- FIN DE FORM -->
+
+    <!-- INICIO DE TABLA -->
+    <section id="tableContainer" class="container container-table"> 
+      <table id="table-results" class="table striped highlight centered responsive-table">
+        <thead>
+          <tr>
+            <th>Nº</th>
+            <th>Cuota</th>
+            <th>Interés</th>
+            <th>Capital</th>
+            <th>Saldo</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section> <!-- FIN DE TABLA -->
+
+    <footer class="page-footer"> <!-- INICIO DE FOOTER -->
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Síguenos en nuestras redes sociales</h5>
+            <a href="https://www.facebook.com/" target="_blank"class="waves-effect waves-teal btn-flat grey-text text-lighten-4">Facebook</a>
+            <a href="https://www.instagram.com/" target="_blank"class="waves-effect waves-teal btn-flat grey-text text-lighten-4">Instagram</a>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Contáctanos</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Requisitos</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Términos y Condiciones</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2021 Copyright Ambarella
+        </div>
+      </div>
+    </footer> <!-- FIN DE FOOTER -->
+
+    <!-- Modal Trigger -->
+    <a id="modal-trigger" class="modal-trigger" href="#modal1">Modal</a>
+    <div id="modal1" class="modal"> <!-- INICIO DE MODAL -->
+      
+      <div class="modal-content">
+        <h4>Bienvenidx!</h4>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+      </div>
+      <div class="row">
+        <form class="col">
+          <div class="row">
+            <div class="input-field col">
+              <input id="firstName" type="text" class="validate"></input>
+              <label for="firstName">Nombre</label>
+            </div>
+            <div class="input-field col">
+              <input id="lastName" type="text" class="validate"></input>
+              <label for="lastName">Apellido</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" id="email" class="validate">
+              <label for="email">Correo Electrónico</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect btn-flat  red-text" id="close-btn">Cerrar</a>
+        <a href="#!" id="btnSubscribe" class="modal-close waves-effect btn-flat green-text">Suscribirme</a>
+      </div>
+    </div> <!--  FIN DE MODAL -->
+
+    <!-- Compiled and minified JavaScript (MATERIALIZE) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Local JavaScript -->
+    <script src="../index.js"></script>
+    <script src="../js/simulator.js"></script>
+  </body>
+</html>
