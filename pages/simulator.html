@@ -58,32 +58,32 @@
         <div class="row">
           <form class="col s12">
             <div class="row">
-              <div class="input-field col s6">
+              <div class="input-field col s12 m6">
                 <i class="material-icons prefix">attach_money</i>
                 <input type="number" name="capital" id="capital" class="validate">
                 <label for="capital">Capital Inicial</label>
               </div>
-              <div class="input-field col s6">
+              <div class="input-field col s12 m6">
                 <img src="../assets/images/discount-symbol.svg" class="prefix icon">
                 <input type="number" name="rate" id="rate" class="validate" value="30">
                 <label for="rate">Tasa de Interes</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s6">
+              <div class="input-field col s12 m6">
                 <i class="material-icons prefix">list</i>
                 <input type="number" name="periods" id="periods" class="validate">
                 <label for="periods">Cantidad de Cuotas</label>
               </div>
-              <div class="input-field col s6">
+              <div class="input-field col s12 m6">
                 <i class="material-icons prefix">date_range</i>
                 <select id="frequency" name="frequency">
-                  <option value="" disabled selected>Escoge</option>
+                  <option value="" disabled selected>Escoge una opción</option>
                   <option value="biweekly">Quincenal</option>
                   <option value="monthly">Mensual</option>
                   <option value="quarterly">Trimestral</option>
                 </select>
-                <label for="frequency">Frecuencia</label>
+                <label for="frequency">Frecuencia de las cuotas</label>
               </div>
             </div>
             <div class="row center">
@@ -139,20 +139,17 @@
     <!-- Modal Trigger -->
     <a id="modal-trigger" class="modal-trigger" href="#modal1">Modal</a>
     <div id="modal1" class="modal"> <!-- INICIO DE MODAL -->
-      
       <div class="modal-content center">
         <h4>Bienvenidx!</h4>
         <p>Agrega tus datos para recibir nuestras novedades.</p>
-      </div>
-      <div class="container">
         <div class="row">
           <form class="col s12">
             <div class="row">
-              <div class="input-field col s6">
+              <div class="input-field col s12 m6">
                 <input id="firstName" type="text" class="validate"></input>
                 <label for="firstName">Nombre</label>
               </div>
-              <div class="input-field col s6">
+              <div class="input-field col s12 m6">
                 <input id="lastName" type="text" class="validate"></input>
                 <label for="lastName">Apellido</label>
               </div>
@@ -166,6 +163,7 @@
           </form>
         </div>
       </div>
+      
 
       <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect btn-flat  red-text" id="close-btn">Cerrar</a>
