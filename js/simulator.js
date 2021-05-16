@@ -5,41 +5,32 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Declarar variables Simulador
-let capital;
-let rate;
-let frequency;
-let periods;
-let btnCalculate;
-let tableResults;
+let capital = $('#capital');
+let rate = $('#rate');
+let frequency = $('#frequency');
+let periods = $('#periods');
+let btnCalculate = $('#btnCalculate');
+let tableResults = $('#table-results tbody');
+let tableContainer = $('#tableContainer');
 
-// Asignar valores a variables desde el form
-capital = document.getElementById('capital');
-rate = document.getElementById('rate');
-periods = document.getElementById('periods');
-frequency = document.getElementById('frequency');
-btnCalculate = document.getElementById('btnCalculate');
-tableResults = document.querySelector('#table-results tbody')
-tableContainer = document.querySelector('#tableContainer');
-
+/* tableContainer = document.querySelector('#tableContainer');
+ */
 // Disparador de función en boton SIMULAR
-btnCalculate.addEventListener('click', function (event) {
+btnCalculate.on('click', function (event) {
   event.preventDefault();
-  calculateAnnuity(capital.value, rate.value, frequency.value, periods.value);
+  calculateAnnuity(capital.val(), rate.val(), frequency.val(), periods.val())
 })
 
 //Funcion de Simulador
 function calculateAnnuity (capital, rate, frequency, periods) {
 
-  while (tableResults.firstChild) {
-    tableResults.removeChild(tableResults.firstChild)
-  }
+  tableResults.empty();
 
   // Declarar variables
   let annuity = 0;
   let actualCapital = capital;
   let interestFee = 0;
   let capitalFee = 0;
-  console.log(frequency)
 
   // Calculo de cuota
   if (frequency === 'biweekly') {
@@ -83,8 +74,8 @@ function calculateAnnuity (capital, rate, frequency, periods) {
     capitalFee = annuity - interestFee;
     actualCapital = actualCapital - capitalFee;
     
-    tableContainer.style.display = 'block';
-    tableResults.appendChild(row);
+    tableContainer.css('display','block');
+    tableResults.append(row);
     
   }
 }
