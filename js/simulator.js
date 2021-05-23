@@ -33,23 +33,27 @@ function calculateAnnuity (capital, rate, frequency, periods) {
   let capitalFee = 0;
 
   // Calculo de cuota
-  if (frequency === 'biweekly') {
-    annuity = capital * (rate/100/24)
-                /
-                (1-Math.pow(1+rate/100/24,-periods));
-  } else if (frequency === 'monthly') {
-    annuity = capital * (rate/100/12)
-                /
-                (1-Math.pow(1+rate/100/12,-periods));
-  } else if (frequency === 'quarterly') {
-    annuity = capital * (rate/100/4)
-                /
-                (1-Math.pow(1+rate/100/4,-periods));
-  } else {
-    annuity = capital * (rate/100/12)
-                /
-                (1-Math.pow(1+rate/100/12,-periods));
+  const annuityFormula = {
+    biweekly: 24,
+    monthly: 12,
+    quarterly: 4
   }
+
+  annuityDefault = 12
+
+  annuity = capital * (rate/100/
+            annuityFormula[frequency])
+            /
+            (1-Math.pow(1+rate/100/
+            annuityFormula[frequency],-periods))
+            ||
+            capital * (rate/100/
+            annuityDefault)
+            /
+            (1-Math.pow(1+rate/100/
+            annuityDefault,-periods));
+  
+
 
   for(let i = 0; i <= periods; i++) {
 
@@ -60,16 +64,9 @@ function calculateAnnuity (capital, rate, frequency, periods) {
       <td>${parseFloat(interestFee).toFixed(2)}</td>
       <td>${parseFloat(capitalFee).toFixed(2)}</td>
       <td>${parseFloat(actualCapital).toFixed(2)}</td>
-    `
-    if (frequency === 'biweekly') {
-      interestFee = actualCapital * rate/100/24;
-    } else if (frequency === 'monthly') {
-      interestFee = actualCapital * rate/100/12;
-    } else if (frequency === 'quarterly') {
-      interestFee = actualCapital * rate/100/4;
-    } else {
-      interestFee = actualCapital * rate/100/12;
-    }
+    `;
+    
+    interestFee = actualCapital * rate/100/annuityFormula[frequency] || actualCapital * rate/100/annuityDefault;
 
     capitalFee = annuity - interestFee;
     actualCapital = actualCapital - capitalFee;

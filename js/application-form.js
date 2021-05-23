@@ -3,13 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
   var datePickElems = document.querySelectorAll('.datepicker');
   var datePickInit = M.Datepicker.init(datePickElems,{
     format: 'dd/mm/yyyy',
+    showClearBtn: true,
+    yearRange: [new Date().getFullYear()-100,new Date().getFullYear()-18],
+    changeMonth: true,
+    changeYear: true,
     i18n: {
       cancel: 'Cancelar',
       months: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
       monthsShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
       weekdays: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
       weekdaysShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sab'],
-      weekdaysAbbrev: ['D','L','M','M','J','V','S']
+      weekdaysAbbrev: ['D','L','M','M','J','V','S'],
+      clear: "Borrar"
     }
   });
 });
@@ -36,8 +41,12 @@ sliderValue = document.getElementById('sliderValue');
 monthsApp = document.getElementById('monthsApp');
 btnApply = document.getElementById('btnApply');
 
-// Slider
+// Abrir calendar on focus
+bDateApp.addEventListener('focus',() => {
+  setTimeout('bDateApp.click()',200);
+} )
 
+// Slider
 monthsApp.addEventListener('change',() => {
   sliderValue.innerHTML = monthsApp.value;
 })

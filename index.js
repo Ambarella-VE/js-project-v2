@@ -1,3 +1,15 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyC6eM-qqMfClgfrkQa4eh7XC3rOoTl_8Dg",
+  authDomain: "simulador-js.firebaseapp.com",
+  projectId: "simulador-js",
+  storageBucket: "simulador-js.appspot.com",
+  messagingSenderId: "947265477327",
+  appId: "1:947265477327:web:36a3b6887965e61feb35ba"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 //Inicializacion MaterializeCSS
 document.addEventListener('DOMContentLoaded', function() {
   var sidenavElems = document.querySelectorAll('.sidenav');
@@ -23,7 +35,7 @@ isConnected = JSON.parse(isConnected)
 
 if (!isConnected) {
   var modalTrigger = document.getElementById("modal-trigger");
-  setTimeout('modalTrigger.click()', 3000);
+  setTimeout('modalTrigger.click()', 15000);
 };
 
 
@@ -64,3 +76,16 @@ btnSubscribe.addEventListener('click', () => {
   M.toast({html: 'Te has suscrito correctamente'})
 });
 
+// Función animations
+function fadeInFn(classOrId, time=1500, timeOut) {
+  $(classOrId).css("display","none");
+  setTimeout(() => {
+    $(classOrId).fadeIn(time);
+  },timeOut)
+}; 
+function slideDownFn(classOrId, time=1500, timeOut) {
+  $(classOrId).css("display","none");
+  setTimeout(() => {
+    $(classOrId).slideDown(time);
+  },timeOut)
+}; 
