@@ -28,7 +28,7 @@
         <nav>
           <div class="nav-wrapper">
             <a href="./index.html" class="brand-logo">  Ambarella  </a>
-            <a href="#" data-target="menu-side" class="sidenav-trigger" onClick="sidenavInit"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="menu-side" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
               <li class="active"><a href="./index.html">Home</a></li>
               <li><a href="./pages/simulator.html">Simula tu préstamo</a></li>
@@ -57,16 +57,16 @@
           </div>
           <div class="row">
             <div class="col s12 btn-row">
-              <a href="./pages/application-form.html" class="waves-effect waves-light btn-large pulse"><i class="material-icons right">account_balance</i>Solicitar prestamo</a>
+              <a href="./pages/application-form.html" class="waves-effect waves-light btn-large pulse">Aplica Ahora</a>
             </div>
           </div>
         </div>
         <!-- FIN ITEMS FIJOS -->
-        <div class="carousel-item hero-img-1">
+        <div class="carousel-item hero-img" id="hero-img-1">
         </div>
-        <div class="carousel-item hero-img-2">
+        <div class="carousel-item hero-img" id="hero-img-2">
         </div>
-        <div class="carousel-item hero-img-3">
+        <div class="carousel-item hero-img" id="hero-img-3">
         </div>
       </div>
       
@@ -96,26 +96,27 @@
       </div>
     </footer> <!-- FIN DE FOOTER -->
 
-    <!-- Modal Trigger -->
-    <a id="modal-trigger" class="modal-trigger" href="#modal1">Modal</a>
-    <div id="modal1" class="modal modal-fixed-footer"> <!-- INICIO DE MODAL -->
+    <!-- INICIO DE MODAL -->
+    <div id="modal1" class="modal modal-fixed-footer">
       <div class="modal-content center">
         <h4>Bienvenidx!</h4>
-        <p>Agrega tus datos para recibir nuestras novedades.</p>
+        <div class="row" id="modal-text">
+          <p>Agrega tus datos para recibir nuestras novedades.</p>
+        </div>
         <div class="row">
           <form class="col s12">
             <div class="row">
-              <div class="input-field col s12 m6">
+              <div class="input-field col s12 m6" id="firstName-container">
                 <input id="firstName" type="text" class="validate"></input>
                 <label for="firstName">Nombre</label>
               </div>
-              <div class="input-field col s12 m6">
+              <div class="input-field col s12 m6" id="lastName-container">
                 <input id="lastName" type="text" class="validate"></input>
                 <label for="lastName">Apellido</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s12" id="email-container">
                 <input type="text" id="email" class="validate">
                 <label for="email">Correo Electrónico</label>
               </div>
@@ -133,6 +134,10 @@
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
     <!-- Compiled and minified JavaScript (MATERIALIZE) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

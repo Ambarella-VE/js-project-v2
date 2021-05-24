@@ -19,53 +19,202 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-//Declarar variables del form de solicitud
-let fNameApp;
-let lNameApp;
-let bDateApp;
-let emailApp;
-let incomeApp;
-let purposeApp;
-let sliderValue;
-let monthsApp;
-let btnApply;
-
-//Asignar valores a variables del form de solicitud
-fNameApp = document.getElementById('first_name');
-lNameApp = document.getElementById('last_name');
-bDateApp = document.getElementById('birth_date');
-emailApp = document.getElementById('e_mail');
-incomeApp = document.getElementById('income');
-purposeApp = document.getElementById('purpose');
-sliderValue = document.getElementById('sliderValue');
-monthsApp = document.getElementById('monthsApp');
-btnApply = document.getElementById('btnApply');
+// Declarar y asignar valores a variables del form de solicitud
+let fNameApp = $('#first_name');
+let fNameAppContainer = $('#first_name-container');
+let lNameApp = $('#last_name');
+let lNameAppContainer = $('#last_name-container');
+let bDateApp = $('#birth_date');
+let bDateAppContainer = $('#birth_date-container');
+let emailApp = $('#e_mail');
+let emailAppContainer = $('#e_mail-container');
+let incomeApp = $('#income');
+let incomeAppContainer = $('#income-container');
+let purposeApp = $('#purpose');
+let purposeAppContainer = $('#purpose-container');
+let sliderValue = $('#sliderValue');
+let monthsApp = $('#monthsApp');
+let btnApply = $('#btnApply');
 
 // Abrir calendar on focus
-bDateApp.addEventListener('focus',() => {
+bDateApp.on('focus',() => {
   setTimeout('bDateApp.click()',200);
 } )
 
 // Slider
-monthsApp.addEventListener('change',() => {
-  sliderValue.innerHTML = monthsApp.value;
+monthsApp.on('change',() => {
+  sliderValue.text(monthsApp.val());
 })
+
+// Handle form
+fNameApp.focusout(() => {
+  fNameAppContainer.find('span').remove();
+  if (fNameApp.val()=="") {
+    fNameApp.removeClass("validate");
+    fNameApp.removeClass("valid");
+    fNameApp.addClass("invalid");
+    const helperText = document.createElement('span');
+    helperText.textContent = "Campo requerido";
+    helperText.setAttribute("class",'helper-text');
+    fNameAppContainer.append(helperText);
+  } else {
+    fNameApp.addClass("validate");
+    fNameApp.removeClass("invalid");
+    fNameAppContainer.find('span').remove();
+  };
+});
+
+lNameApp.focusout(() => {
+  lNameAppContainer.find('span').remove();
+  if (lNameApp.val()=="") {
+    lNameApp.removeClass("validate");
+    lNameApp.removeClass("valid");
+    lNameApp.addClass("invalid");
+    const helperText = document.createElement('span');
+    helperText.textContent = "Campo requerido";
+    helperText.setAttribute("class",'helper-text');
+    lNameAppContainer.append(helperText);
+  } else {
+    lNameApp.addClass("validate");
+    lNameApp.removeClass("invalid");
+    lNameAppContainer.find('span').remove();
+  };
+});
+
+bDateApp.focusout(() => {
+  bDateAppContainer.find('span.helper-text').remove();
+  if (bDateApp.val()=="") {
+    bDateApp.removeClass("validate");
+    bDateApp.removeClass("valid");
+    bDateApp.addClass("invalid");
+    const helperText = document.createElement('span');
+    helperText.textContent = "Campo requerido";
+    helperText.setAttribute("class",'helper-text');
+    bDateAppContainer.append(helperText);
+  } else {
+    bDateApp.addClass("validate");
+    bDateApp.removeClass("invalid");
+    bDateAppContainer.find('span.helper-text').remove();
+  };
+});
+
+bDateApp.change(() => {
+  bDateAppContainer.find('span.helper-text').remove();
+  if (bDateApp.val()=="") {
+    bDateApp.removeClass("validate");
+    bDateApp.removeClass("valid");
+    bDateApp.addClass("invalid");
+    const helperText = document.createElement('span');
+    helperText.textContent = "Campo requerido";
+    helperText.setAttribute("class",'helper-text');
+    bDateAppContainer.append(helperText);
+  } else {
+    bDateApp.addClass("validate");
+    bDateApp.removeClass("invalid");
+    bDateAppContainer.find('span.helper-text').remove();
+  };
+});
+
+emailApp.focusout(() => {
+  emailAppContainer.find('span.helper-text').remove();
+  if (emailApp.val()==""
+      || !emailRegex.test(emailApp.val())
+    ) {
+    emailApp.removeClass("validate");
+    emailApp.removeClass("valid");
+    emailApp.addClass("invalid");
+    const helperText = document.createElement('span');
+    helperText.textContent = "Ingresa un email válido";
+    helperText.setAttribute("class",'helper-text');
+    emailAppContainer.append(helperText);
+  } else {
+    emailApp.addClass("validate");
+    emailApp.removeClass("invalid");
+    emailAppContainer.find('span').remove();
+  };
+});
+
+incomeApp.focusout(() => {
+  incomeAppContainer.find('span').remove();
+  if (incomeApp.val()==""
+      || incomeApp.val()<1
+  ) {
+    incomeApp.removeClass("validate");
+    incomeApp.removeClass("valid");
+    incomeApp.addClass("invalid");
+    const helperText = document.createElement('span');
+    helperText.textContent = "Debes ingresar un monto";
+    helperText.setAttribute("class",'helper-text');
+    incomeAppContainer.append(helperText);
+  } else {
+    incomeApp.addClass("validate");
+    incomeApp.removeClass("invalid");
+    incomeAppContainer.find('span').remove();
+  };
+});
+
+purposeApp.focusout(() => {
+  purposeAppContainer.find('span').remove();
+  if (purposeApp.val()=="") {
+    purposeApp.removeClass("validate");
+    purposeApp.removeClass("valid");
+    purposeApp.addClass("invalid");
+    const helperText = document.createElement('span');
+    helperText.textContent = "Campo requerido";
+    helperText.setAttribute("class",'helper-text');
+    purposeAppContainer.append(helperText);
+  } else {
+    purposeApp.addClass("validate");
+    purposeApp.removeClass("invalid");
+    purposeAppContainer.find('span').remove();
+  };
+});
+
 // Disparador de función en boton SOLICITAR
-btnApply.addEventListener('click', function (event) {
+btnApply.on('click', function (event) {
   event.preventDefault();
-  handleBtnApply(
-    fNameApp.value,
-    lNameApp.value,
-    bDateApp.value,
-    emailApp.value,
-    parseInt(incomeApp.value),
-    purposeApp.value,
-    parseInt(monthsApp.value)
-    )
+  
+  if (
+    fNameApp.val()!=""
+    && lNameApp.val()!=""
+    && bDateApp.val()!=""
+    && emailApp.val()!=""
+    && incomeApp.val()!=""
+    && purposeApp.val()!=""
+    && monthsApp.val()!=""
+    && emailRegex.test(emailApp.val())
+    && incomeApp.val()>0
+    ) {
+      handleBtnApply(
+        fNameApp.val(),
+        lNameApp.val(),
+        bDateApp.val(),
+        emailApp.val(),
+        parseInt(incomeApp.val()),
+        purposeApp.val(),
+        parseInt(monthsApp.val())
+        )
+      fNameApp.trigger('focusout');
+      lNameApp.trigger('focusout');
+      bDateApp.trigger('focusout');
+      emailApp.trigger('focusout');
+      incomeApp.trigger('focusout');
+      purposeApp.trigger('focusout');
+    } else {
+      M.toast({html: 'Completa los campos necesarios', classes: 'rounded'})
+      fNameApp.trigger('focusout');
+      lNameApp.trigger('focusout');
+      bDateApp.trigger('focusout');
+      emailApp.trigger('focusout');
+      incomeApp.trigger('focusout');
+      purposeApp.trigger('focusout');
+    }
 })
 
 // Función en boton SOLICITAR
 function handleBtnApply(fName = "", lName = "", bDate = "", email = "", income = 0, purpose = "",months = 36) {
+
+  
 
   //Calcular si es mayor de edad
   let bDateArrayStr = bDate.split('/');
@@ -181,8 +330,19 @@ function handleBtnApply(fName = "", lName = "", bDate = "", email = "", income =
       hideContainer.style.display = 'none';
     };
 
-    console.log();
+    db.collection('applications').doc().set({
+      fName: fName.toProperCase(),
+      lName: lName.toProperCase(),
+      bDate,
+      email: email.toLowerCase(),
+      income,
+      purpose: purpose.charAt(0).toUpperCase() + purpose.substr(1).toLowerCase(),
+      months,
+      minLoan,
+      maxLoan,
+      timeStamp: new Date()
+    })
   } else {
-    M.toast({html: 'Eres menor de edad! No puedes solicitar un préstamo'})
+    M.toast({html: 'Eres menor de edad! No puedes solicitar un préstamo', classes:'rounded'})
   }
 };

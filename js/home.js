@@ -1,4 +1,4 @@
-//Inicializacion MaterializeCSS
+//Inicializacion
 document.addEventListener('DOMContentLoaded', function() {
   var carouselElems = document.querySelectorAll('.carousel');
   var carouselInit = M.Carousel.init(carouselElems,{
@@ -15,4 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
       elemInstance.next();
     },2000);
   });
+
+  fetch('../assets/utils/data.json')
+  .then(res => res.json())
+  .then(data => data.forEach(obj => {
+    $(`#hero-img-${obj.id}`).css("background-image",`
+      linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.4)), url(${obj.url})
+    `)
+  }))
+  .catch(err => console.log(err))
 });

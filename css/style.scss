@@ -36,23 +36,24 @@
   }
 }
 
-.hero-img-1 {
+.hero-img {
   background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.4)), url("https://images.pexels.com/photos/1329711/pexels-photo-1329711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940.jpg");
   background-position: center;
   background-size: 80%;
   height: auto;
+  background-size: cover;
 }
 
-.hero-img-2 {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.3)), url("https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940.jpg");
-  background-position: center;
-  background-size: 100%;
-  height: auto;
+#rate-icon {
+  transition: all 0.1s ease-in;
 }
 
-.hero-img-3 {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.4)), url("https://images.pexels.com/photos/1005417/pexels-photo-1005417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940.jpg");
-  background-position: bottom;
-  background-size: 100%;
-  height: auto;
+.main-helper-text {
+  margin: 10px;
+}
+
+
+#monthsApp::-webkit-slider-thumb {
+  width: 20px;
+  height: 15px;
 }
