@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     },2000);
   });
 
-  fetch('../assets/utils/data.json')
+  fetch('https://raw.githubusercontent.com/Ambarella-VE/js-project-v2/desafio-clase-7/assets/utils/data.json')
   .then(res => res.json())
   .then(data => data.forEach(obj => {
     $(`#hero-img-${obj.id}`).css("background-image",`
