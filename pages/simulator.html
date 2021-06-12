@@ -28,7 +28,7 @@
         <nav>
           <div class="nav-wrapper">
             <a href="../index.html" class="brand-logo">  Ambarella  </a>
-            <a href="#" data-target="menu-side" class="sidenav-trigger" onClick="sidenavInit"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="menu-side" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
               <li><a href="../index.html">Home</a></li>
               <li class="active"><a href="./simulator.html">Simula tu préstamo</a></li>
@@ -58,35 +58,52 @@
         <div class="row">
           <form class="col s12">
             <div class="row">
-              <div class="input-field col s12 m6">
+              <div class="input-field col s12 m6" id="capital-container">
                 <i class="material-icons prefix">attach_money</i>
-                <input type="number" name="capital" id="capital" class="validate">
+                <input type="number" name="capital" id="capital" min="1">
                 <label for="capital">Capital Inicial</label>
               </div>
-              <div class="input-field col s12 m6">
-                <img src="../assets/images/discount-symbol.svg" class="prefix icon">
-                <input type="number" name="rate" id="rate" class="validate" value="30">
+              <div class="input-field col s12 m6" id="rate-container">
+                <svg version="1.1" id="rate-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 443.615 443.615" style="enable-background:new 0 0 443.615 443.615;font-size: 28px;" xml:space="preserve" class="prefix icon">
+                  <g>
+                    <path d="M209.949,100.813C209.949,45.232,164.725,0,109.144,0C53.562,0,8.346,45.232,8.346,100.813
+                      c0,55.566,45.216,100.782,100.798,100.782C164.725,201.596,209.949,156.38,209.949,100.813z M58.419,100.813
+                      c0-27.986,22.754-50.74,50.725-50.74c27.969,0,50.732,22.754,50.732,50.74c0,27.954-22.763,50.709-50.732,50.709
+                      C81.173,151.522,58.419,128.768,58.419,100.813z">
+                    </path>
+                    <path d="M334.473,242.02c-55.583,0-100.799,45.216-100.799,100.782c0,55.582,45.216,100.814,100.799,100.814
+                      c55.581,0,100.797-45.231,100.797-100.814C435.27,287.235,390.054,242.02,334.473,242.02z M334.473,393.542
+                      c-27.971,0-50.726-22.755-50.726-50.74c0-27.954,22.755-50.709,50.726-50.709c27.969,0,50.724,22.755,50.724,50.709
+                      C385.196,370.787,362.441,393.542,334.473,393.542z">
+                    </path>
+                    <path d="M337.577,12.925c-13.081-7.254-29.616-2.574-36.91,10.515L94.896,392.923c-7.294,13.089-2.59,29.616,10.505,36.919
+                      c4.181,2.314,8.713,3.423,13.179,3.423c9.527,0,18.77-5.02,23.733-13.936L348.083,49.845
+                      C355.376,36.755,350.675,20.228,337.577,12.925z">
+                    </path>
+                  </g>
+                </svg>
+                <input type="number" name="rate" id="rate" value="30" min="1">
                 <label for="rate">Tasa de Interes</label>
+
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12 m6">
+              <div class="input-field col s12 m6" id="periods-container">
                 <i class="material-icons prefix">list</i>
-                <input type="number" name="periods" id="periods" class="validate">
+                <input type="number" name="periods" id="periods" min="6" max="72" step="6">
                 <label for="periods">Cantidad de Cuotas</label>
               </div>
               <div class="input-field col s12 m6">
                 <i class="material-icons prefix">date_range</i>
                 <select id="frequency" name="frequency">
-                  <option value="" disabled selected>Escoge una opción</option>
                   <option value="biweekly">Quincenal</option>
-                  <option value="monthly">Mensual</option>
+                  <option value="monthly" selected>Mensual</option>
                   <option value="quarterly">Trimestral</option>
                 </select>
                 <label for="frequency">Frecuencia de las cuotas</label>
               </div>
             </div>
-            <div class="row center">
+            <div class="row center red-text" id="btnCalculate-container">
               <div class="col s12">
                 <input id="btnCalculate" type="submit" value="Simular" class="waves-effect waves-light btn validate">
               </div>
@@ -136,26 +153,27 @@
       </div>
     </footer> <!-- FIN DE FOOTER -->
 
-    <!-- Modal Trigger -->
-    <a id="modal-trigger" class="modal-trigger" href="#modal1">Modal</a>
-    <div id="modal1" class="modal modal-fixed-footer"> <!-- INICIO DE MODAL -->
+    <!-- INICIO DE MODAL -->
+    <div id="modal1" class="modal modal-fixed-footer">
       <div class="modal-content center">
         <h4>Bienvenidx!</h4>
-        <p>Agrega tus datos para recibir nuestras novedades.</p>
+        <div class="row" id="modal-text">
+          <p>Agrega tus datos para recibir nuestras novedades.</p>
+        </div>
         <div class="row">
           <form class="col s12">
             <div class="row">
-              <div class="input-field col s12 m6">
+              <div class="input-field col s12 m6" id="firstName-container">
                 <input id="firstName" type="text" class="validate"></input>
                 <label for="firstName">Nombre</label>
               </div>
-              <div class="input-field col s12 m6">
+              <div class="input-field col s12 m6" id="lastName-container">
                 <input id="lastName" type="text" class="validate"></input>
                 <label for="lastName">Apellido</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s12" id="email-container">
                 <input type="text" id="email" class="validate">
                 <label for="email">Correo Electrónico</label>
               </div>
@@ -170,6 +188,13 @@
         <a href="#!" id="btnSubscribe" class="modal-close waves-effect btn-flat green-text">Suscribirme</a>
       </div>
     </div> <!--  FIN DE MODAL -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
 
     <!-- Compiled and minified JavaScript (MATERIALIZE) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
